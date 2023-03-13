@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+
+        <meta charset="UTF-8">
+
+        <title>WhoHasIt.org</title>
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+
+        <script src="./index.js" defer></script>
+
+
+    </head>
+
+    <body>
+
+        <h1>WhoHasIt</h1>
+        <h5>Find out where you can watch you favourite movies and TVs shows.</h5>
+
+        <label for="region">Region:</label>
+        <select id="region">
+
+            <option value="us">United States</option>
+            <option value="uk">United Kingdom</option>
+            <option value="ca">Canada</option>
+            <option value="au">Australia</option>
+
+
+        </select>
+
+        <label for="genre">Genre:</label>
+        <select id="genre">
+
+            <option value="any">Any</option>
+            <option value="action">Action</option>
+            <option value="comedy">Comedy</option>
+            <option value="drama">Drama</option>
+            <option value="horror">Horror</option>
+            <option value="romance">Romance</option>
+            <option value="sci-fi">Sci-Fi</option>
+
+        </select>
+
+        <label for="searchBox">Title:</label>
+        <input type="text" id="searchBox" placeholder="E.g. The Big Bang Theory">
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>Movie Name</th>
+                    <th>Netflix</th>
+                    <th>HBO</th>
+                    <th>Binge</th>
+                    <th>Stan</th>
+                    <th>Disney+</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody id="results">
+            </tbody>
+
+        </table>
+
+    </body>
+
+</html>
