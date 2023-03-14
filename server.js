@@ -68,8 +68,6 @@ app.get("/search", (req, res) => {
 
             if (err) throw err;
 
-            console.log(result)
-
             res.json(result);
 
         });
