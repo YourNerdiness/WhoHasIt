@@ -1,29 +1,22 @@
 const express = require("express");
-const mysql = require("mysql2");
-const fs = require("fs");
-
-
-
+const sqlite3 = require("sqlite3").verbose();
 require("dotenv").config();
 
 const app = express();
 
-const sslOptions = {
+const db = new sqlite3.Database("main-db");
 
-    ca: fs.readFileSync("mysqlssl/ca.pem"),
-
-};
-
-const pool = mysql.createPool({
-
-    connectionLimit : 10,
-    host : process.env.MYSQL_HOST,
-    user : process.env.MYSQL_USERNAME,
-    password : process.env.MYSQL_PASSWORD,
-    database : process.env.MYSQL_DB_NAME,
-    ssl : sslOptions
-
-});
+db.run(`CREATE TABLE IF NOT EXISTS titles (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        name TEXT NOT NULL,
+        region TEXT NOT NULL,
+        genre TEXT NOT NULL,
+        netflix INTEGER NOT NULL DEFAULT 0,
+        hbo INTEGER NOT NULL DEFAULT 0,
+        binge INTEGER NOT NULL DEFAULT 0,
+        stan INTEGER NOT NULL DEFAULT 0,
+        disney INTEGER NOT NULL DEFAULT 0
+);`);
 
 app.use(express.static("public"));
 app.use(express.json());
@@ -60,9 +53,9 @@ app.get("/search", (req, res) => {
                     WHEN LOWER(name) LIKE CONCAT("%", LOWER(?), "%") THEN 4 
                     ELSE 5 
                 END
-        `.replace(/(\r\n|\n|\r)/gm, "");
+        `;
 
-        connection.query(sql, [query, region, genre, genre, query, query, query, query], (err, result) => {
+        db.all(sql, [query, region, genre, genre, query, query, query, query], (err, result) => {
 
             connection.release();
 
