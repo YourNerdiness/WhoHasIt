@@ -1,3 +1,7 @@
 .env
+api-key.txt
+APIKeys.js
+
+dbs
 node_modules
 package-lock.json
