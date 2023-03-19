@@ -111,7 +111,7 @@ app.post("/add", (req, res) => {
 
     else {
 
-        db.run(`INSERT INTO titles (name, region, genre, netflix, hbo, binge, stan, disney)
+        db.run(`INSERT OR REPLACE INTO titles (name, region, genre, netflix, hbo, binge, stan, disney)
                 VALUES (?, ?, ?, ?, ?, ?, ?, ?)`, [toAdd.name, toAdd.region, toAdd.genre, toAdd.netflix, toAdd.hbo, toAdd.binge, toAdd.stan, toAdd.disney]);
 
         res.send("Added to the database succesfully.");
