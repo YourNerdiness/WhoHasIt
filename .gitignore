@@ -1,6 +1,7 @@
 .env
 api-key.txt
 APIKeys.js
+add-to-db.js
 
 dbs
 node_modules
